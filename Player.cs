@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     int coins = 0;
     int health = 10;
+    public AudioSource audioSource;
+    public AudioClip damageSound;
     public GameObject fireballPrefab;
     public Transform attackPoint;
+
 
     public void CollectCoins()
     {
@@ -17,8 +21,17 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        print("Tu vida es: " + health);
+        if (health > 0)
+        {
+            health -= damage;
+            print("Tu vida es: " + health);
+            audioSource.PlayOneShot(damageSound);
+        }
+        else
+        {
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(sceneIndex);
+        }
     }
 
     private void Update()
@@ -27,6 +40,5 @@ public class Player : MonoBehaviour
         {
             Instantiate(fireballPrefab, attackPoint.position, attackPoint.rotation);
         }
-
     }
 }
