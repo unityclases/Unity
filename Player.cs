@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     int coins = 0;
-    int health = 10;
+    public int health = 10;
+    public int maxHealth = 10;
     public AudioSource audioSource;
     public AudioClip damageSound;
     public GameObject fireballPrefab;
