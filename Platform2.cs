@@ -17,7 +17,7 @@ public class Platform : MonoBehaviour
             transform.position += direction * speed * Time.deltaTime;
         }
 
-        if (gameObject.transform.position.z <= StopPoint1.position.z || gameObject.transform.position.z >= StopPoint2.position.z) 
+        if (gameObject.transform.position.y <= StopPoint1.position.y || gameObject.transform.position.y >= StopPoint2.position.y) 
         {
             direction *= -1;
         }
